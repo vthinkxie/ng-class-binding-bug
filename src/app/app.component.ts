@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    {{ classMap | json }}
+  `,
+  host: {
+    '[class]': 'classMap'
+  }
 })
-export class AppComponent {
-  title = 'ng-host-classname';
+export class AppComponent implements AfterViewInit {
+  classMap = {
+    test: true
+  };
+  ngAfterViewInit(): void {
+    this.classMap = {
+      test: true
+    };
+  }
 }
