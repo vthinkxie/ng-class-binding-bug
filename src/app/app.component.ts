@@ -4,8 +4,11 @@ import { AfterViewInit, Component } from '@angular/core';
   selector: 'app-root',
   template: `
     {{ classMap | json }}
+    <!-- this won't report error -->
+    <app-test [classMap]="classMap"></app-test>
   `,
   host: {
+    // this would report error
     '[class]': 'classMap'
   }
 })
